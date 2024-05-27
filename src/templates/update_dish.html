@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update Dish</title>
+</head>
+<body>
+    <h2>Update Dish</h2>
+    <form method="post" action="/update_dish/{{ dish['id'] }}">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" value="{{ dish['name'] }}"><br><br>
+        <label for="description">Description:</label>
+        <input type="text" id="description" name="description" value="{{ ','.join(dish['description']) }}"><br><br>
+        <label for="price">Price:</label>
+        <input type="text" id="price" name="price" value="{{ dish['price'] }}"><br><br>
+        <label for="category">Category:</label>
+        <select id="category" name="category">
+            <option value="starters" {% if dish['category'] == 'starters' %}selected{% endif %}>Starters</option>
+            <option value="mains" {% if dish['category'] == 'mains' %}selected{% endif %}>Mains</option>
+            <option value="desserts" {% if dish['category'] == 'desserts' %}selected{% endif %}>Desserts</option>
+        </select><br><br>
+        <input type="submit" value="Update Dish">
+    </form>
+</body>
+</html>

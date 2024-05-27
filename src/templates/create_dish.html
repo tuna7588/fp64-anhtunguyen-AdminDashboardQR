@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Dish</title>
+</head>
+<body>
+    <h2>Add Dish</h2>
+    <form method="post" action="/create_dish">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name"><br><br>
+        <label for="description">Description:</label>
+        <input type="text" id="description" name="description"><br><br>
+        <label for="price">Price:</label>
+        <input type="text" id="price" name="price"><br><br>
+        <label for="category">Category:</label>
+        <select id="category" name="category">
+            <option value="starters">Starters</option>
+            <option value="mains">Mains</option>
+            <option value="desserts">Desserts</option>
+        </select><br><br>
+        <input type="submit" value="Create Dish">
+    </form>
+</body>
+</html>
