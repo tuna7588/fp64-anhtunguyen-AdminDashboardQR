@@ -1,24 +1,34 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Create Dish</title>
-</head>
-<body>
-    <h2>Add Dish</h2>
-    <form method="post" action="/create_dish">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name"><br><br>
-        <label for="description">Description:</label>
-        <input type="text" id="description" name="description"><br><br>
-        <label for="price">Price:</label>
-        <input type="text" id="price" name="price"><br><br>
-        <label for="category">Category:</label>
-        <select id="category" name="category">
-            <option value="starters">Starters</option>
-            <option value="mains">Mains</option>
-            <option value="desserts">Desserts</option>
-        </select><br><br>
-        <input type="submit" value="Create Dish">
-    </form>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Create Dish</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='create_dish_styles.css') }}">
+    </head>
+    <body>
+        <div class="container">
+            <h1>Add New Dish</h1>
+            <form action="{{ url_for('create_dish') }}" method="post">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                
+                <label for="description">Description:</label>
+                <textarea id="description" name="description" rows="4" required></textarea>
+                
+                <label for="price">Price:</label>
+                <input type="number" id="price" name="price" step="0.01" required>
+                
+                <label for="category">Category:</label>
+                <select id="category" name="category">
+                    <option value="starters">Starters</option>
+                    <option value="mains">Mains</option>
+                    <option value="desserts">Desserts</option>
+                </select><br><br>
+                
+                <button type="submit">Add Dish</button>
+            </form>
+            <a href="{{ url_for('admin') }}">Cancel</a>
+        </div>
+    </body>
 </html>

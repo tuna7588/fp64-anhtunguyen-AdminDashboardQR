@@ -124,7 +124,7 @@ def delete_dish(id):
     if 'username' not in session or session['username'] != 'admin':
         abort(403)
     if request.method == 'POST':
-        menu.delete_dish(id)
+        example_menu.delete_dish(id)
         return redirect(url_for('admin'))
     return render_template('delete_dish.html', dish_id=id)
    

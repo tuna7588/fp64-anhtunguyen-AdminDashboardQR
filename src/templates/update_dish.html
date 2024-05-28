@@ -1,24 +1,30 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Update Dish</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='update_dish_styles.css') }}">
 </head>
 <body>
-    <h2>Update Dish</h2>
-    <form method="post" action="/update_dish/{{ dish['id'] }}">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" value="{{ dish['name'] }}"><br><br>
-        <label for="description">Description:</label>
-        <input type="text" id="description" name="description" value="{{ ','.join(dish['description']) }}"><br><br>
-        <label for="price">Price:</label>
-        <input type="text" id="price" name="price" value="{{ dish['price'] }}"><br><br>
-        <label for="category">Category:</label>
-        <select id="category" name="category">
-            <option value="starters" {% if dish['category'] == 'starters' %}selected{% endif %}>Starters</option>
-            <option value="mains" {% if dish['category'] == 'mains' %}selected{% endif %}>Mains</option>
-            <option value="desserts" {% if dish['category'] == 'desserts' %}selected{% endif %}>Desserts</option>
-        </select><br><br>
-        <input type="submit" value="Update Dish">
-    </form>
+    <div class="container">
+        <h1>Update Dish</h1>
+        <form action="{{ url_for('update_dish', id=dish.id) }}" method="post">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" value="{{ dish.name }}" required>
+            
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" rows="4" required>{{ dish.description }}</textarea>
+            
+            <label for="price">Price:</label>
+            <input type="number" id="price" name="price" value="{{ dish.price }}" step="0.01" required>
+            
+            <label for="category">Category:</label>
+            <input type="text" id="category" name="category" value="{{ dish.category }}" required>
+            
+            <button type="submit">Update</button>
+        </form>
+        <a href="{{ url_for('admin') }}">Cancel</a>
+    </div>
 </body>
 </html>
